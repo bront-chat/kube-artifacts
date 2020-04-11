@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brontchat
+spec:
+  selector:
+    matchLabels:
+      app: brontchat
+      env: dev
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: brontchat
+        env: dev
+    spec:
+      containers:
+        - name: brontchat
+          image: bunnyrailgun/brontchat:v0.0.1
+          ports:
+            - containerPort: 3000
+              protocol: TCP
